@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Spinnaker");
+body {
+  background: #66b2b2;
+  color: #ecf0f1;
+  font-family: lato,sans-serif;
+  text-align: center;
+  margin: 10% auto;
+  display: table;
+}
+
+form {
+  text-align: left;
+}
+
+#file-upload {
+  position: absolute;
+  left: -9999px;
+}
+
+label[for="file-upload"] {
+  padding: 0.5em;
+  display: inline-block;
+  background: #004c4c;
+  cursor: pointer;
+}
+label[for="file-upload"]:hover {
+  background: #008080;
+}
+
+#filename {
+  padding: 0.5em;
+  float: left;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #008080 ;
+}
