@@ -1,5 +1,8 @@
 
-$(document).ready(function(){
+// $(document).ready(function(){
+  var table;
+
+
 $('#file-upload').change(function() {
     var filepath = this.value;
     var m = filepath.match(/([^\/\\]+)$/);
@@ -27,6 +30,7 @@ $('#file-upload').change(function() {
 });
 
 function displayHTMLTable(results){
+  $("#export-data" ).removeClass( "hidden" );
     // var table = "<table class='table'>";
     var data = results.data;
     var tabData = [];
@@ -36,7 +40,7 @@ function displayHTMLTable(results){
       // table+= "<tr>";
       var row = data[i];
       var cells = row.join(",").split(",");
-       
+      
       // for(j=0;j<cells.length;j++){
       //   table+= "<td>";
       //   table+= cells[j];
@@ -61,7 +65,7 @@ function displayHTMLTable(results){
 
 
 
-    var table = new Tabulator("#example-table", {
+    table = new Tabulator("#example-table", {
         data: tabData,
         layout:"fitDataFill",
         paginationSize: 100,
@@ -80,5 +84,28 @@ function displayHTMLTable(results){
     });
   }
 
-  });
+  function submit(){
+    $("#export-data" ).addClass( "hidden" );
+    // debugger;
+    // var data = $("#example-table").tabulator("getData");
+    var data = table.getData()
+    var results =[];
+    console.log("Table Data: ");
+    console.log(data);
+
+    for(var i = 0; i<data.length; i++){
+        var obj = {
+          'name': data[i].name,
+          'address': data[i].address.substring(1,data[i].address.length) + ", " + data[i].city + ", " + data[i].state.substring(0, data[i].state.length-1),
+          'isDriver': (data[i].driver == undefined) ? undefined : true,
+          'numSeats': data[i].seats
+        }
+        results.push(obj);
+    }
+    console.log("RESULTS: ", results);
+  }
+
+  // });
+  
+
 

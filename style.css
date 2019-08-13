@@ -8,9 +8,7 @@ body {
   display: table;
 }
 
-form {
-  text-align: left;
-}
+
 
 #file-upload {
   position: absolute;
@@ -23,6 +21,12 @@ label[for="file-upload"] {
   background: #004c4c;
   cursor: pointer;
 }
+label[for="export-data"]{
+  padding: 0.5em 1em;
+  display: inline-block;
+  background: #004c4c;
+  cursor: pointer;
+}
 label[for="file-upload"]:hover {
   background: #008080;
 }
@@ -30,7 +34,7 @@ label[for="file-upload"]:hover {
   display: -webkit-inline-box;
 }
 .container{
-  margin-top: 30px;
+  margin: 30px 0 ;
   clear:both;
 }
 #filename {
@@ -40,6 +44,10 @@ label[for="file-upload"]:hover {
   white-space: nowrap;
   overflow: hidden;
   background: #008080 ;
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 /*Theme the Tabulator element*/
