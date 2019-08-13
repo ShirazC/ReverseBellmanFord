@@ -97,12 +97,17 @@ function displayHTMLTable(results){
         var obj = {
           'name': data[i].name,
           'address': data[i].address.substring(1,data[i].address.length) + ", " + data[i].city + ", " + data[i].state.substring(0, data[i].state.length-1),
-          'isDriver': (data[i].driver == undefined) ? undefined : true,
+          'isDriver': (data[i].driver == undefined) ? false : true,
           'numSeats': data[i].seats
         }
         results.push(obj);
     }
     console.log("RESULTS: ", results);
+
+    // printData(results);
+    localStorage.setItem("savedData", JSON.stringify(results));
+    debugger;
+    window.location.href = "./map.html";
   }
 
   // });

@@ -15,7 +15,7 @@ function disable() {
 }
 
 var n = 0;
-var globList = [["Mike", "75 Malin Rd, Malvern PA", false, 6], ["Evan", "9206 St Andrews Pl, College Park MD", false, 6]]
+var globList;
 var loc = [];
 
 function Graph() {
@@ -30,6 +30,9 @@ function initMap() {
         lng: -77.40593
     };
 
+    // console.log(localStorage.getItem("graphData")[0]);
+    globList = JSON.parse(localStorage.getItem("savedData"));
+    console.log("GLOBLIST ", globList);
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: myLatLng
@@ -81,7 +84,7 @@ function geocoding(arr, resultsMap) {
   for (var i = 0; i < arr.length; i++) {
 
     geocoder.geocode({
-      'address': arr[i][1]
+      'address': arr[i].address
     },
     function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -99,7 +102,7 @@ function geocoding(arr, resultsMap) {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-    if(arr[i][2] == false){
+    if(arr[i].isDriver == false){
       console.log("YUH");
           // var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
           //   var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
