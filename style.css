@@ -26,7 +26,13 @@ label[for="file-upload"] {
 label[for="file-upload"]:hover {
   background: #008080;
 }
-
+.uploadDiv{
+  display: -webkit-inline-box;
+}
+.container{
+  margin-top: 30px;
+  clear:both;
+}
 #filename {
   padding: 0.5em;
   float: left;
@@ -34,4 +40,57 @@ label[for="file-upload"]:hover {
   white-space: nowrap;
   overflow: hidden;
   background: #008080 ;
+}
+
+/*Theme the Tabulator element*/
+#example-table{
+    /*background-color:blue!important;*/
+    border: none;
+    border-color: white;
+    /*border-radius: 10px;*/
+}
+
+/*Theme the header*/
+#example-table .tabulator-header {
+    /*background-color:blue!important;*/
+    color:#fff;
+}
+
+/*Allow column header names to wrap lines*/
+#example-table .tabulator-header .tabulator-col,
+#example-table .tabulator-header .tabulator-col-row-handle {
+    white-space: normal;
+    background-color: #004c4c;
+    vertical-align: middle;
+    border-bottom: 2px solid white!important;
+    padding: 0.5em;
+    text-align: center;
+    border: none;
+    border-color: #004c4c;
+    /*height: 100px;*/
+}
+
+/*Color the table rows*/
+#example-table .tabulator-tableHolder .tabulator-table .tabulator-row{
+    color:#fff;
+    background-color: #008080;
+    border-color: white;
+}
+
+/*Color even rows*/
+    #example-table .tabulator-tableHolder .tabulator-table .tabulator-row:nth-child(even) {
+    background-color: #006666;
+    border-color: white;
+}
+
+.tabulator-row .tabulator-cell {
+  border-color: white!important;
+}
+
+.tabulator .tabulator-header {
+  border-bottom: none!important;
+}
+
+.tabulator-row .tabulator-cell:last-child {
+  border-right: none!important;
 }

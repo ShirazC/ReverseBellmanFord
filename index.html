@@ -7,14 +7,32 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-
+<div class="uploadDiv">
 <form method="post" enctype="multipart/form-data" action="">
   <span id="filename">Select your file</span>
     <label for="file-upload">Browse<input type="file" id="file-upload"></label>
 </form>
+</div>
 <!-- partial -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.0.2/papaparse.min.js" integrity="sha256-SU1Ep4Z1qETBgIsTRa5WlmPq9oHzkzR83Fia3jeXHp4=" crossorigin="anonymous"></script>
 <script  src="./script.js"></script>
+<link href="https://unpkg.com/tabulator-tables@4.4.0/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.4.0/dist/js/tabulator.min.js"></script>
 
+<!-- form class="form-inline">
+  <div class="form-group">
+    <label for="files">Upload a CSV formatted file:</label>
+    <input type="file" id="files"  class="form-control" accept=".csv" required />
+  </div>
+  <div class="form-group">
+   <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
+   </div>
+</form> -->
+</body>
+<body>
+<div class="container">
+  <div id="example-table"></div>
+</div>
 </body>
 </html>
