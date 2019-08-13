@@ -16,7 +16,7 @@ function disable() {
 
 var n = 0;
 var globList = [["Mike", "75 Malin Rd, Malvern PA", false, 6], ["Evan", "9206 St Andrews Pl, College Park MD", false, 6]]
-var location;
+var loc = [];
 
 function Graph() {
   this.node = []
@@ -57,6 +57,7 @@ function initMap() {
             //console.log(array);
 
             geocoding(globList, map);
+            console.log("LOCATION", loc);
 
         });
 }
@@ -78,40 +79,38 @@ function geocoding(arr, resultsMap) {
   });
 
   for (var i = 0; i < arr.length; i++) {
-    location = null;
 
     geocoder.geocode({
       'address': arr[i][1]
     },
     function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
-        location = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
-        console.log(location);
+        var curLoc = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
+        loc.push(curLoc);
+        console.log("HELLO")
+        debugger;
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
         });
       }
+
       else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-
-    while (location == null) {
-      console.log("waiting");
-    }
-
-    console.log("LOCATION: ", location);
-    console.debug("hi");
-    console.debug(arr[i][2] + " " + arr[i][0] + arr[i][3]);
-    debugger;
-
-    if (arr[i][2] === false) {
-      // var node = Node(arr[i][2], arr[i][0], location, arr[i][3]);
-      // passengerList.push(node);
-    } else {
-      // driverList.push(Node(arr[i][2], arr[i][0], location, arr[i][3]));
-    }
+    if(arr[i][2] == false){
+      console.log("YUH");
+          // var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
+          //   var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
+          //   passengerList.push(node);
+        }
+        // debugger;
+    // console.log("LOCATION: ", loc);
+    // console.debug("hi");
+    // console.debug(arr[i][2] + " " + arr[i][0] + arr[i][3]);
+    // debugger;
+    // initGraph(passengerList);
   }
   //
   // initGraph(passengerList);
