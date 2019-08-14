@@ -50,12 +50,6 @@ function initMap() {
     document.getElementById('submit').addEventListener('click',
         function() {
 
-            n = 6;
-            count = 0;
-            graph = {};
-
-            for (var i = 1; i < n + 1; i++)
-                array.push(document.getElementById('address' + i).value);
 
             //console.log(array);
 
@@ -68,23 +62,11 @@ function initMap() {
 var driverList = [];
 var passengerList = [];
 
-// The array will be [..., [Name, Address, Boolean], ...]
-function geocoding(arr, resultsMap) {
-  var geocoder = new google.maps.Geocoder();
+function getGeocode(address, map, geocoder, i){
+  setTimeout(function(){
 
-  // The map, centered at Uluru
-  var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
-      center: {
-          lat: 41.85,
-          lng: -87.65
-      }
-  });
-
-  for (var i = 0; i < arr.length; i++) {
-
-    geocoder.geocode({
-      'address': arr[i].address
+          geocoder.geocode({
+      'address': address
     },
     function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -100,10 +82,27 @@ function geocoding(arr, resultsMap) {
 
       else {
         alert('Geocode was not successful for the following reason: ' + status);
+        console.log(status);
       }
-    });
-    if(arr[i].isDriver == false){
-      console.log("YUH");
+    });      }, 600 * i);
+}
+
+// The array will be [..., [Name, Address, Boolean], ...]
+function geocoding(arr, resultsMap) {
+  var geocoder = new google.maps.Geocoder();
+  // The map, centered at Uluru
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: {
+          lat: 41.85,
+          lng: -87.65
+      }
+  });
+console.log("ARRAY", arr);
+  for (var i = 0; i < arr.length; i++) {
+      
+        getGeocode(arr[i].address, map, geocoder, i);
+    
           // var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
           //   var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
           //   passengerList.push(node);
@@ -117,7 +116,7 @@ function geocoding(arr, resultsMap) {
   }
   //
   // initGraph(passengerList);
-}
+
 
 var graph = null;
 
