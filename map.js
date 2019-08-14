@@ -23,6 +23,18 @@ function Graph() {
   this.edge = []
 }
 
+function Node(label, id, location, seats) {
+  // Driver is true, passenger is false
+  this.label = label;
+  this.id = id;
+  this.location = location;
+  // Will be empty for all passengers
+  this.connections = [];
+  // Will be zero for all passengers
+  this.seats = seats;
+  this.flag = null;
+}
+
 function initMap() {
     var array = [];
     var myLatLng = {
@@ -100,9 +112,9 @@ function geocoding(arr, resultsMap) {
   });
 console.log("ARRAY", arr);
   for (var i = 0; i < arr.length; i++) {
-      
+
         getGeocode(arr[i].address, map, geocoder, i);
-    
+
           // var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
           //   var node = Node(arr[i][2], arr[i][0], loc, arr[i][3]);
           //   passengerList.push(node);
