@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css?family=Spinnaker");
+body {
+  background: #66b2b2;
+  color: #ecf0f1;
+  font-family: lato,sans-serif;
+  text-align: center;
+  margin: 10% auto;
+  display: table;
+}
+
+
+
+#file-upload {
+  position: absolute;
+  left: -9999px;
+}
+
+label[for="file-upload"] {
+  padding: 0.5em;
+  display: inline-block;
+  background: #004c4c;
+  cursor: pointer;
+}
+label[for="export-data"]{
+  padding: 0.5em 1em;
+  display: inline-block;
+  background: #004c4c;
+  font-family: lato,sans-serif!important;
+  color: #ecf0f1;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+label[for="file-upload"]:hover {
+  background: #008080;
+}
+.uploadDiv{
+  display: -webkit-inline-box;
+}
+.container{
+  margin: 30px 0 ;
+  clear:both;
+}
+#filename {
+  padding: 0.5em;
+  float: left;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #008080 ;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+/*Theme the Tabulator element*/
+#example-table{
+    /*background-color:blue!important;*/
+    border: none;
+    border-color: white;
+    /*border-radius: 10px;*/
+}
+
+/*Theme the header*/
+#example-table .tabulator-header {
+    /*background-color:blue!important;*/
+    color:#fff;
+}
+
+/*Allow column header names to wrap lines*/
+#example-table .tabulator-header .tabulator-col,
+#example-table .tabulator-header .tabulator-col-row-handle {
+    white-space: normal;
+    background-color: #004c4c;
+    vertical-align: middle;
+    border-bottom: 2px solid white!important;
+    padding: 0.5em;
+    text-align: center;
+    border: none;
+    border-color: #004c4c;
+    /*height: 100px;*/
+}
+
+/*Color the table rows*/
+#example-table .tabulator-tableHolder .tabulator-table .tabulator-row{
+    color:#fff;
+    background-color: #008080;
+    border-color: white;
+}
+
+/*Color even rows*/
+    #example-table .tabulator-tableHolder .tabulator-table .tabulator-row:nth-child(even) {
+    background-color: #006666;
+    border-color: white;
+}
+
+.tabulator-row .tabulator-cell {
+  border-color: white!important;
+}
+
+.tabulator .tabulator-header {
+  border-bottom: none!important;
+}
+
+.tabulator-row .tabulator-cell:last-child {
+  border-right: none!important;
+}

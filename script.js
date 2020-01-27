@@ -34,13 +34,13 @@ function displayHTMLTable(results){
     // var table = "<table class='table'>";
     var data = results.data;
     var tabData = [];
-    
-     
+
+
     for(i=0;i<data.length;i++){
       // table+= "<tr>";
       var row = data[i];
       var cells = row.join(",").split(",");
-      
+
       // for(j=0;j<cells.length;j++){
       //   table+= "<td>";
       //   table+= cells[j];
@@ -58,7 +58,7 @@ function displayHTMLTable(results){
     }
       tabData.push(obj);
       // table+= "</tr>";
-      
+
     }
     // table+= "</table>";
     // $("#parsed_csv_list").html(table);
@@ -85,7 +85,7 @@ function displayHTMLTable(results){
   }
 
   function submit(){
-    $("#export-data" ).addClass( "hidden" );
+    // $("#export-data" ).addClass( "hidden" );
     // debugger;
     // var data = $("#example-table").tabulator("getData");
     var data = table.getData()
@@ -95,22 +95,39 @@ function displayHTMLTable(results){
 
     for(var i = 0; i<data.length; i++){
         var obj = {
-          'name': data[i].name,
-          'address': data[i].address.substring(1,data[i].address.length) + ", " + data[i].city + ", " + data[i].state.substring(0, data[i].state.length-1),
-          'isDriver': (data[i].driver == undefined) ? false : true,
-          'numSeats': data[i].seats
+          name: data[i].name,
+          address: data[i].address.substring(1,data[i].address.length) + ", " + data[i].city + ", " + data[i].state.substring(0, data[i].state.length-1),
+          isDriver: (data[i].driver == undefined) ? false : true,
+          numSeats: Number(data[i].seats)
         }
         results.push(obj);
     }
-    console.log("RESULTS: ", results);
 
-    // printData(results);
-    localStorage.setItem("savedData", JSON.stringify(results));
-    debugger;
-    window.location.href = "./map.html";
+    if(checkDrivers(results)){
+      console.log("RESULTS: ", results);
+
+      // printData(results);
+      localStorage.setItem("savedData", JSON.stringify(results));
+      debugger;
+      window.location.href = "./map.html";
+    }
+    else{
+      alert("Numbers don't add up!");
+    }
+
+  }
+
+  function checkDrivers(array){
+    count = 0;
+    for(var i =0; i<array.length; i++){
+      count += array[i].numSeats
+    }
+
+    if(count >= array.length){
+      console.log("COUNT IS: ", count);
+      return true;
+    }
+    return false;
   }
 
   // });
-  
-
-

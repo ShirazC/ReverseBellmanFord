@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+    <title>Welcome to DriveShare!</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./static/map.css">
+</head>
+<body>
+    <div id="map"> </div>
+    <div>
+        <center>
+            <!-- <input id="address1" type="text"  class="user" placeholder="Starting Address">
+         <input id="address2" type="text"  class="user" placeholder="Intermediary Address">
+         <input id="address3" type="text"  class="user" placeholder="Intermediary Address">
+         <input id="address4" type="text"  class="user" placeholder="Intermediary Address">
+         <input id="address5" type="text"  class="user" placeholder="Ending Address"> -->
+    </div>
+    <div class="container">
+        <div class="button"> </div>
+        <!-- <input type="button" value="Reload Page" onClick="window.location.reload()"> -->
+        <div class="inputs-container hidden">
+            <div class="input-container">
+                <input id="submit" type="button" value="Geocode">
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript">
+      var globList = {{ mapData }}
+    </script>
+    <script src="./static/scripts/map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZHLIOxN_xA0qeKmS9LMyAGVMjudUPdGs&callback=initMap">
+    </script>
+</body>
+
+</html>
